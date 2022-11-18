@@ -96,14 +96,17 @@ void setup1(){
 
 void loop1(){
   if ( micros() - lastCore2Update > 1.e6/core2Freq ){
-    lastCore2Update = micros()
+    lastCore2Update = micros();
 
-    if everithingInit{
+    if (everithingInit) {
 
       float e1 = targetVal1 - val1;
       float e2 = targetVal2 - val2;
 
       float Ki = 0.05;
+
+      val1 += Ki*e1;
+      val2 += Ki*e2;
 
       // TO BE COMPLETED INTEGRAL CONTROL
 
