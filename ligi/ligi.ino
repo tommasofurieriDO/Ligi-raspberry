@@ -21,7 +21,7 @@ uint16_t I2 = 0; // [0, range]
 
 bool everithingInit = 0;
 
-uint8_t core2Freq = 100; // Hz
+uint8_t core2Freq = 200; // Hz
 uint32_t lastCore2Update = 0; // ms
 
 int32_t myRound(float val){
@@ -72,10 +72,10 @@ void loop() {
         command = input_str.toInt();
       }
       if (i == 1){
-        val1 = input_str.toFloat();
+        targetVal1 = input_str.toFloat();
       }
       if (i == 2){
-        val2 = input_str.toFloat();
+        targetVal2 = input_str.toFloat();
       }
     }
 
@@ -86,16 +86,13 @@ void loop() {
       if(targetVal1<-1){targetVal1 = -1.;}
       if(targetVal2<-1){targetVal2 = -1.;}
     }
-
   }
-
 }
 
-void setup1(){
-}
+void setup1() {}
 
-void loop1(){
-  if ( micros() - lastCore2Update > 1.e6/core2Freq ){
+void loop1() {
+    if ( micros() - lastCore2Update > 1.e6/core2Freq ){
     lastCore2Update = micros();
 
     if (everithingInit) {
@@ -103,7 +100,7 @@ void loop1(){
       float e1 = targetVal1 - val1;
       float e2 = targetVal2 - val2;
 
-      float Ki = 0.05;
+      float Ki = 0.02;
 
       val1 += Ki*e1;
       val2 += Ki*e2;
