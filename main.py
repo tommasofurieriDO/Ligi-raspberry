@@ -8,10 +8,13 @@ if __name__ == "__main__":
     VCdevice.connect(port)
     
     #%%
-    val1 = -0.9
-    val2 = -0.5
+    val1 = -1
+    val2 = 0
+    
 
     VCdevice.goto(val1,val2)
 
     #%%
     VCdevice.close()
+
+# %%

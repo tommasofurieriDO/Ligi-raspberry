@@ -11,7 +11,9 @@ uint8_t directionPin2 = 6;
 
 uint32_t PWMfrew = 125e6; // max pwm clock 125MHz
 uint32_t freq = 100e3; // Hz
-uint32_t range = floor(PWMfrew/freq);
+uint32_t range = floor(PWMfrew/freq); 
+// the resolution is 1/range
+// freq*resolution must be the max PWM freq available
 
 bool dir1 = 0; // 0 forward - 1 reverse
 bool dir2 = 0; // 0 forward - 1 reverse
